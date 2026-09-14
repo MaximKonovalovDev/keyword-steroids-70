@@ -1,79 +1,25 @@
-# Keyword Steroids — 70 Languages — כלי מילות מפתח בעברית + 69 more
+# Keyword Steroids 70 (FREE)
 
-**Keyword research in 70 languages with no key** — Google Suggest `hl={lang} gl={region}` (autocomplete 30) + People Also Ask (10) + Related Searches (10) + Jaccard clustering + intent tags per language (`מחיר/עלות/זול` / `price/cost/cheap` / `precio/coste/barato` / `سعر/تكلفة/رخيص` ... 40+ lexicons).
+Keyword gap finder: Suggest + PAA + Related, 70 language masks.
 
-Fork of [chukhraiartur/seo-keyword-research-tool](https://github.com/chukhraiartur/seo-keyword-research-tool) (MIT, 160★) — **SerpApi removed**. Direct `suggestqueries.google.com/complete/search?client=firefox&hl={lang}&gl={region}` + HTML scrape. No keys, 1.2s throttle. One engine, 70 masks — `core.py` is `hl/gl` parameterized, alphabet + intent lexicon per language live in `INTENT_LEXICONS`/`LANG_ALPHABETS` (40+ rows, from `data/matrix/languages.json` 127).
+Honest limit: 4 locales proven, rest experimental.
 
-Reuses: `engine/keywords.py` (zens-ink a-z + Jaccard `hl` aware), `engine/bsearch.py` `region/gl lang/hl`, `tools/keyword-miner.ps1` suggest URL. PAA pattern from `sundios/people-also-ask`. Clustering from `seranking/seo-skills`. Gold lane `products/mcp-gold/08-keyword-steroids`.
+Get it: https://maxkonova.gumroad.com/l/keyword-steroids-70
 
-Smoke-proven: 4/70 locales proven — iw/il, es/es, ar/sa, tr/tr. Remaining 66 are UNPROVEN parameter masks.
+Free connectors: https://github.com/MaximKonovalovDev/mcp-free-pack
 
-> **Honest limit (2026-09-14): 4/70 smoke-proven, 66 unproven.** Only `iw/il`, `es/es`, `ar/sa`, `tr/tr` have live PASS; other 66 `hl/gl` masks are wired but not live-proven. Price $0 free magnet — no checkout needed.
+Shop all tools with honest compare pages: https://shop-527.pages.dev
 
-**Faces:** A = CLI `he-keyword-tool` (now `--lang iw/es/fr/de/tr/ar/ru... --gl il/es/fr...`)  ·  B = MCP server `mcp_server.py` (same core, `lang/gl` params, 3 tools)  ·  C = HOLD (wire only — `programmatic-seo-generator` import, no pages built until 30d affiliate rail verified). Hebrew proved 11 PASS / 0-1/10 OPEN 2026-08-19 — same gate per language.
 
-## Install
+# Keyword Steroids 70 (FREE)
 
-```bash
-pip install -e ./products/keyword-steroids-70
-# or
-pip install -e .  # from products/keyword-steroids-70/
-# Single source — alias products/he-keyword-steroids removed 2026-08-20, use engine/keyword_steroids.py wrapper
-# from engine.keyword_steroids import research
-```
+Keyword gap finder: Suggest + PAA + Related, 70 language masks.
 
-Requires Python 3.10+ and `requests` + `mcp`.
+Honest limit: 4 locales proven, rest experimental.
 
-## CLI — Face A
+Get it: https://maxkonova.gumroad.com/l/keyword-steroids-70
 
-```bash
-he-keyword-tool --query "כלי מילות מפתח" --lang iw --limit 30 --cluster --out report.json
-he-keyword-tool --query "מחקר מילות מפתח" --lang iw --limit 30 --cluster --json
-he-keyword-tool --query "כלי מילות מפתח" --lang iw --limit 10 --no-paa --out report.json
-```
+Free connectors: https://github.com/MaximKonovalovDev/mcp-free-pack
 
-Args: `--query` (required, any language), `--lang iw|en|es|fr|de|tr|ar|ru|pt|it|pl|ja|ko|zh-CN...`, `--gl il|es|fr|de|tr|sa|ru...`, `--limit 1..100` (default 30), `--cluster` (Jaccard), `--threshold 0..1`, `--no-paa`, `--no-related`, `--out report.json` (UTF-8), `--json` (stdout). Hebrew example: `--lang iw --gl il`; Spanish: `--lang es --gl es`; 70 combos from `data/matrix/languages.json`.
+Shop all tools with honest compare pages: https://shop-527.pages.dev
 
-Output JSON: `seed`, `lang`, `gl`, `count`, `keywords[{keyword, source, intent, he_tags}]`, `auto_complete[]`, `related_searches[]` (≤10), `related_questions[]` (≤10), `clusters[{topic, members}]`, `meta`, `generated_at`. UTF-8, `ensure_ascii=False`.
-
-Example:
-
-```bash
-he-keyword-tool --query "השכרת טיולון בנתניה" --lang iw --limit 20 --cluster --json
-```
-
-## MCP — Face B
-
-Same core, single file `mcp_server.py` reusing `src/he_keyword_tool/core.py`. Tools: `search_keywords`, `get_paa`, `cluster`. No keys.
-
-```json
-{
-  "mcpServers": {
-    "keyword-steroids-70": {
-      "command": "python",
-      "args": ["C:/path/to/products/keyword-steroids-70/mcp_server.py"]
-    }
-  }
-}
-```
-
-Registry belt docs: `docs/registry/` (Smithery / Glama / PulseMCP).
-
-## Disclosure & Privacy
-
-Affiliate/tool site rules (AGENTS.md CREATION). No money link ships without disclosure+privacy. See `PRIVACY.md` and `DISCLOSURE.md` in this repo. Product gate: `engine/gates/keyword-steroids-70_gate.py` 56/56 PASS before any money link. Single source `products/keyword-steroids-70/src/he_keyword_tool/core.py` + `engine/keyword_steroids.py`.
-
-## Face C — HOLD
-
-`aureo-manzano/programmatic-seo-generator` is wired only as an import check in the gate. No pages are built. Rail must be verified (`data/matrix/rails.json` VERIFIED 365-day cookie) before any site ships.
-
-## Contracts
-
-- UTF-8 everywhere. Hebrew output is not transliterated.
-- Throttle: 1.2s every 8 suggest calls + 0.35s between calls.
-- No secrets, no SerpApi, no `SERPAPI_API_KEY`.
-- Exit codes: 0 success, 2 bad args, 1 runtime fail.
-
-## License
-
-MIT — see `LICENSE`. Upstream `chukhraiartur/seo-keyword-research-tool` remains MIT.
